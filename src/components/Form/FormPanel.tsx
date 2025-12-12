@@ -24,6 +24,9 @@ export interface FormData {
   badges: BadgeProps[]
   color: string;
   eventDetail: string;
+  showTime?: string;
+  openGateTime?: string;
+  director?: string
 }
 
 interface FormPanelProps {

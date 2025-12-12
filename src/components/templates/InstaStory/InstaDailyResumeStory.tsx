@@ -1,7 +1,7 @@
-import type { DailyMovieData } from "../../../pages/DailyMovieGenerator/DailyMovieGenerator";
+import type { FormData } from "../../Form/FormPanel";
 
 interface InstaStoryProps {
-    data: DailyMovieData;
+    data: FormData;
 }
 
 export default function InstaDailyStory({ data }: InstaStoryProps) {

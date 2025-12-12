@@ -3,16 +3,11 @@ import { useState, useRef } from "react";
 import PreviewContainer from "../../components/PreviewContainer/PreviewContainer";
 import FormDailyMovie from "./FormDailyMovie";
 import GeneratorPageLayout from "../../components/Layout/GeneratorPageLayout";
+import GeneratorFormLayout from "../../components/Layout/GeneratorFormLayout";
 
-
-export interface DailyMovieData extends FormData {
-    showTime: string;
-    openGateTime: string;
-    director: string
-}
 
 export default function DailyMovieGenerator() {
-    const [dailyMovieData, setDailyMovieData] = useState<DailyMovieData>({
+    const [dailyMovieData, setDailyMovieData] = useState<FormData>({
         filename: "",
         date: "",
         imageUrl: "",
@@ -32,7 +27,7 @@ export default function DailyMovieGenerator() {
     const dailyStoryRef = useRef<HTMLDivElement | null>(null);
     const dailyStoryResumeRef = useRef<HTMLDivElement | null>(null);
 
-    const handleChange = (field: keyof DailyMovieData, value: DailyMovieData[keyof DailyMovieData]) => {
+    const handleChange = (field: keyof FormData, value: FormData[keyof FormData]) => {
         setDailyMovieData((prev) => ({ ...prev, [field]: value }));
     };
 
@@ -50,11 +45,9 @@ export default function DailyMovieGenerator() {
 
     return (
         <div className="min-h-screen bg-slate-900 text-slate-100 flex overflow-hidden">
-            <aside className="fixed top-0 left-0 w-[360px] h-screen bg-slate-900 border-r border-slate-800 p-4 overflow-y-auto z-20">
-                <h2 className="text-sm font-semibold mb-3">🎨 Formulaire :</h2>
+            <GeneratorFormLayout>
                 <FormDailyMovie data={dailyMovieData} onChange={handleChange} />
-            </aside>
-
+            </GeneratorFormLayout>
             <GeneratorPageLayout nodes={nodes} numberOfPdf={2}>
                 <PreviewContainer
                     data={dailyMovieData}

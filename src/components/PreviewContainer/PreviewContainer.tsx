@@ -5,13 +5,13 @@ import FacebookPost from "../templates/FacebookPost";
 import type { FormData } from "../Form/FormPanel";
 
 
-import type { DailyMovieData } from "../../pages/DailyMovieGenerator/DailyMovieGenerator";
+
 import InstaStory from "../templates/InstaStory/InstaStory";
 import InstaDailyStory from "../templates/InstaStory/InstaDailyStory";
 import InstaDailyResumeStory from "../templates/InstaStory/InstaDailyResumeStory";
 
 interface PreviewContainerProps {
-  data: FormData | DailyMovieData;
+  data: FormData;
   instaRef?: React.RefObject<HTMLDivElement | null>;
   fbRef?: React.RefObject<HTMLDivElement | null>;
   storyRef?: React.RefObject<HTMLDivElement | null>;
@@ -80,7 +80,7 @@ export default function PreviewContainer({
           </div>
         </>
       )}
-      {dailyStoryResumeRef && (
+      {(dailyStoryResumeRef) && (
         <>
           <div className="text-xl mt-2">Résumé:</div>
           <div ref={dailyStoryResumeRef}>

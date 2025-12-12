@@ -37,7 +37,7 @@ export default function GeneratorPageLayout({ children, nodes, numberOfPdf }: Ge
                 ⬇ Télécharger les {numberOfPdf} PNG
             </button>
 
-            <section className="w-full h-screen overflow-x-hidden  px-8 py-10 flex flex-col items-center mb-4">
+            <section className="w-full h-screen overflow-x-hidden  px-8 py-10 flex flex-col items-center mb-4 hidden md:flex">
                 <h2 className="text-sm font-semibold mb-6 mt-2 self-start">
                     Prévisualisation
                 </h2>

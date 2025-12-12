@@ -59,12 +59,9 @@ export default function DraggableImage({
 
   const handleMouseMove = (e: React.MouseEvent) => {
     if (!isDragging) return;
-
     const deltaX = e.clientX - startPos.x;
     const deltaY = e.clientY - startPos.y;
-
     const { x, y } = clampPosition(local.x + deltaX, local.y + deltaY, local.scale);
-
     setLocal({ ...local, x, y });
     onChange(x, y, local.scale);
     setStartPos({ x: e.clientX, y: e.clientY });
@@ -73,36 +70,35 @@ export default function DraggableImage({
   const handleMouseUp = () => setIsDragging(false);
 
   /** Zoom centré sur la souris, limité à taille réelle */
-  const handleWheel = (e: React.WheelEvent) => {
-    e.preventDefault();
+  const handleZoom = (event: React.WheelEvent) => {
     const container = containerRef.current;
     if (!container) return;
 
     const rect = container.getBoundingClientRect();
-    const mouseX = e.clientX - rect.left;
-    const mouseY = e.clientY - rect.top;
+    const cursorX = event.clientX - rect.left;
+    const cursorY = event.clientY - rect.top;
 
-    const delta = e.deltaY < 0 ? 0.1 : -0.1;
+    const zoomStep = event.deltaY < 0 ? 0.1 : -0.1;
 
-    // calcul du minScale pour ne pas descendre sous la taille réelle
-    const cw = container.clientWidth;
-    const scaleMin = Math.min(
-      naturalSize.current.width / cw,
-      naturalSize.current.height / (cw * imageRatio.current)
-    );
+    // scale minimum pour que l'image remplisse toujours le container
+    const scaleX = container.clientWidth / naturalSize.current.width;
+    const scaleY = container.clientHeight / naturalSize.current.height;
+    const minScale = Math.max(scaleX, scaleY);
 
-    // zoom avant illimité, zoom arrière limité
-    const newScale = Math.max(local.scale + delta, scaleMin);
+    const nextScale = Math.max(local.scale + zoomStep, minScale);
 
-    // déplacement pour garder le point sous le curseur fixe
-    const dx = (mouseX - local.x) * (newScale / local.scale - 1);
-    const dy = (mouseY - local.y) * (newScale / local.scale - 1);
+    // garder le point sous le curseur immobile
+    const scaleFactor = nextScale / local.scale;
+    const offsetX = (cursorX - local.x) * (scaleFactor - 1);
+    const offsetY = (cursorY - local.y) * (scaleFactor - 1);
 
-    const { x, y } = clampPosition(local.x - dx, local.y - dy, newScale);
+    const { x, y } = clampPosition(local.x - offsetX, local.y - offsetY, nextScale);
 
-    setLocal({ x, y, scale: newScale });
-    onChange(x, y, newScale);
+    setLocal({ x, y, scale: nextScale });
+    onChange(x, y, nextScale);
   };
+
+
 
 
   /** Double click reset */
@@ -121,7 +117,7 @@ export default function DraggableImage({
       onMouseUp={handleMouseUp}
       onMouseLeave={handleMouseUp}
       onDoubleClick={handleDoubleClick}
-      onWheel={handleWheel}
+      onWheel={handleZoom}
     >
       <img
         src={src}

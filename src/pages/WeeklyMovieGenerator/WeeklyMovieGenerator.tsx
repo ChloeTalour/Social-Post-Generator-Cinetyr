@@ -2,6 +2,7 @@ import PreviewContainer from "../../components/PreviewContainer/PreviewContainer
 import FormPanel, { type FormData } from "../../components/Form/FormPanel";
 import { useState, useRef } from "react";
 import GeneratorPageLayout from "../../components/Layout/GeneratorPageLayout";
+import GeneratorFormLayout from "../../components/Layout/GeneratorFormLayout";
 
 export default function WeeklyMovieGenerator() {
   const [formData, setFormData] = useState<FormData>({
@@ -43,10 +44,9 @@ export default function WeeklyMovieGenerator() {
 
   return (
     <div className="min-h-screen bg-slate-900 text-slate-100 flex overflow-hidden">
-      <aside className="fixed top-0 left-0 w-[360px] h-screen bg-slate-900 border-r border-slate-800 p-4 overflow-y-auto z-20">
-        <h2 className="text-sm font-semibold mb-3">🎨 Formulaire :</h2>
+      <GeneratorFormLayout>
         <FormPanel data={formData} onChange={handleChange} />
-      </aside>
+      </GeneratorFormLayout>
 
       <GeneratorPageLayout nodes={nodes} numberOfPdf={3}>
         <PreviewContainer

@@ -9,7 +9,7 @@ export default function FormField({
 }: {
     id: string;
     label: string;
-    value: string;
+    value: string | undefined;
     onChange: (v: string) => void | Promise<void>;
     placeholder?: string;
     type?: string;

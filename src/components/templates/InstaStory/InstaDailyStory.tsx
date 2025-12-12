@@ -1,9 +1,9 @@
-import type { DailyMovieData } from "../../../pages/DailyMovieGenerator/DailyMovieGenerator";
 import DraggableImage from "../../DraggableImage/DraggableImage";
 import HeaderInstaStory from "./HeaderInstaStory";
+import type { FormData } from "../../Form/FormPanel";
 
 interface InstaStoryProps {
-    data: DailyMovieData;
+    data: FormData;
     onImageMove: (x: number, y: number) => void;
 }
 

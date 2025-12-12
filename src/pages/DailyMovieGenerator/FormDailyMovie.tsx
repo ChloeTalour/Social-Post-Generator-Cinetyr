@@ -4,11 +4,11 @@ import FormBadges from "../../components/Form/Badges/FormBadges";
 import FormField from "../../components/Form/FormField";
 import FormLayout from "../../components/Layout/FormLayout";
 import PickerColor from "../../components/PickerColor/PickerColor";
-import type { DailyMovieData } from "./DailyMovieGenerator";
+import type { FormData } from "../../components/Form/FormPanel";
 
 interface FormDailyMovieProps {
-    data: DailyMovieData
-    onChange: (field: keyof DailyMovieData, value: DailyMovieData[keyof DailyMovieData]) => void;
+    data: FormData
+    onChange: (field: keyof FormData, value: FormData[keyof FormData]) => void;
 }
 
 export default function FormDailyMovie({ data, onChange }: FormDailyMovieProps) {
