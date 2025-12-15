@@ -2,7 +2,7 @@
 import DragAndDrop from "../../components/DragAndDrop/DragAndDrop";
 import FormBadges from "../../components/Form/Badges/FormBadges";
 import FormField from "../../components/Form/FormField";
-import FormLayout from "../../components/Layout/FormLayout";
+import FormLayout from "../../layouts/FormLayout";
 import PickerColor from "../../components/PickerColor/PickerColor";
 import type { FormData } from "../../components/Form/FormPanel";
 

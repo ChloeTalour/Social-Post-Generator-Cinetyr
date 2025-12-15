@@ -1,6 +1,6 @@
-import DraggableImage from "../../DraggableImage/DraggableImage";
-import type { FormData } from "../../Form/FormPanel";
-import HeaderInstaStory from "../InstaStory/HeaderInstaStory";
+import DraggableImage from "../../components/DraggableImage/DraggableImage";
+import type { FormData } from "../../components/Form/FormPanel";
+import HeaderInstaStory from "./HeaderInstaStory";
 
 interface InstaStoryProps {
   data: FormData;
@@ -19,7 +19,6 @@ export default function InstaStory({ data, onImageMove }: InstaStoryProps) {
       <div className="absolute top-[-330px] left-[-260px] w-[1390px] h-[833px] bg-white rotate-[-7.6deg] z-0" />
 
       <div className="z-10 w-full">
-
         <HeaderInstaStory
           color={data.color}
           date={data.date}
@@ -32,8 +31,8 @@ export default function InstaStory({ data, onImageMove }: InstaStoryProps) {
               <DraggableImage
                 src={imageSrc}
                 alt={data.title}
-                offsetX={data.imageOffsetX.facebookPost}
-                offsetY={data.imageOffsetY.facebookPost}
+                offsetX={data.imageOffsetX.instaStory}
+                offsetY={data.imageOffsetY.instaStory}
                 onChange={onImageMove}
               />
             ) : (
@@ -46,6 +45,7 @@ export default function InstaStory({ data, onImageMove }: InstaStoryProps) {
 
             {data.badges.length > 0 && data.badges.map((badge) => (
               <div
+                key={badge.id}
                 className="rounded-full text-white font-league-spartan font-bold text-[30px] pt-2 px-9"
                 style={{ backgroundColor: badge.color }}
               >

@@ -1,18 +1,17 @@
 import { useState, useRef } from "react";
 
 interface useDraggableProps {
-    containerRef: React.RefObject<HTMLDivElement | null>
-    imageRef: React.RefObject<HTMLDivElement | null>
     onChange: (x: number, y: number, scale: number) => void;
     offsetX: number,
     offsetY: number
 }
 
-export function useDraggable({ containerRef, imageRef, onChange, offsetX, offsetY }: useDraggableProps) {
-
+export function useDraggable({ onChange, offsetX, offsetY }: useDraggableProps) {
     const [position, setPosition] = useState<{ x: number, y: number }>({ x: offsetX, y: offsetY });
     const [isDragging, setIsDragging] = useState<boolean>(false)
     const [scale, setScale] = useState<number>(1);
+    const containerRef = useRef<HTMLDivElement | null>(null);
+    const imageRef = useRef<HTMLImageElement | null>(null);
 
     const lastPosition = useRef<{ x: number, y: number }>({ x: 0, y: 0 });
 
@@ -82,5 +81,5 @@ export function useDraggable({ containerRef, imageRef, onChange, offsetX, offset
     }
 
 
-    return { position, onMouseDown, onMouseMove, onMouseUp, scale, onWheel, onDoubleClick };
+    return { position, onMouseDown, onMouseMove, onMouseUp, scale, onWheel, onDoubleClick, containerRef, imageRef };
 }

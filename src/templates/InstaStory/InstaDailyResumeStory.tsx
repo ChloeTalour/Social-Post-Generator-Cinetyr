@@ -1,4 +1,4 @@
-import type { FormData } from "../../Form/FormPanel";
+import type { FormData } from "../../components/Form/FormPanel";
 
 interface InstaStoryProps {
     data: FormData;
@@ -54,6 +54,7 @@ export default function InstaDailyStory({ data }: InstaStoryProps) {
 
                         {data.badges.length > 0 && data.badges.map((badge) => (
                             <div
+                                key={badge.id}
                                 className="rounded-full text-white font-league-spartan font-bold text-[30px] pt-2 px-9"
                                 style={{ backgroundColor: badge.color }}
                             >

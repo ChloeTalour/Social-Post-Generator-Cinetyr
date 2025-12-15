@@ -11,12 +11,12 @@ interface GeneratorPageLayoutProps {
 }
 
 export default function GeneratorPageLayout({ children, nodes, numberOfPdf }: GeneratorPageLayoutProps) {
-
     const handleDownloadAll = async () => {
         for (const node of nodes) {
             if (!node.ref) continue;
             try {
                 const dataUrl = await toPng(node.ref, { cacheBust: true });
+                console.log(node.ref)
                 const link = document.createElement("a");
                 link.download = node.filename;
                 link.href = dataUrl;

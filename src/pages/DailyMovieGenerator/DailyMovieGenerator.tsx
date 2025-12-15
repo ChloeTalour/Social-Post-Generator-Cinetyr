@@ -2,8 +2,8 @@ import { type FormData } from "../../components/Form/FormPanel";
 import { useState, useRef } from "react";
 import PreviewContainer from "../../components/PreviewContainer/PreviewContainer";
 import FormDailyMovie from "./FormDailyMovie";
-import GeneratorPageLayout from "../../components/Layout/GeneratorPageLayout";
-import GeneratorFormLayout from "../../components/Layout/GeneratorFormLayout";
+import GeneratorPageLayout from "../../layouts/GeneratorPageLayout";
+import GeneratorFormLayout from "../../layouts/GeneratorFormLayout";
 
 
 export default function DailyMovieGenerator() {

@@ -1,6 +1,6 @@
-import DraggableImage from "../../DraggableImage/DraggableImage";
+import DraggableImage from "../../components/DraggableImage/DraggableImage";
 import HeaderInstaStory from "./HeaderInstaStory";
-import type { FormData } from "../../Form/FormPanel";
+import type { FormData } from "../../components/Form/FormPanel";
 
 interface InstaStoryProps {
     data: FormData;
@@ -22,14 +22,14 @@ export default function InstaDailyStory({ data, onImageMove }: InstaStoryProps) 
                     date={data.date}
                     title="Que voir aujourd’hui au cinéma ?"
                 />
-                <div className="relative">
-                    <div className="mt-[80px] h-[597px] w-[960px] overflow-hidden mx-auto bg-black">
+                <div className="relative mt-[80px] flex justify-center">
+                    <div className=" h-[597px] w-[960px] overflow-hidden mx-auto">
                         {imageSrc ? (
                             <DraggableImage
                                 src={imageSrc}
                                 alt={data.title}
-                                offsetX={data.imageOffsetX.facebookPost}
-                                offsetY={data.imageOffsetY.facebookPost}
+                                offsetX={data.imageOffsetX.instaStory}
+                                offsetY={data.imageOffsetY.instaStory}
                                 onChange={onImageMove}
                             />
                         ) : (
@@ -41,6 +41,7 @@ export default function InstaDailyStory({ data, onImageMove }: InstaStoryProps) 
                     <div className="absolute top-5 right-[80px] flex flex-col gap-2 items-end">
                         {data.badges.length > 0 && data.badges.map((badge) => (
                             <div
+                                key={badge.id}
                                 className="rounded-full text-white font-league-spartan font-bold text-[30px] pt-2 px-9"
                                 style={{ backgroundColor: badge.color }}
                             >

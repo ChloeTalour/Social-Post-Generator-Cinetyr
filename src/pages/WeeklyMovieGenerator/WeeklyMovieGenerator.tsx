@@ -1,8 +1,8 @@
 import PreviewContainer from "../../components/PreviewContainer/PreviewContainer";
 import FormPanel, { type FormData } from "../../components/Form/FormPanel";
 import { useState, useRef } from "react";
-import GeneratorPageLayout from "../../components/Layout/GeneratorPageLayout";
-import GeneratorFormLayout from "../../components/Layout/GeneratorFormLayout";
+import GeneratorPageLayout from "../../layouts/GeneratorPageLayout";
+import GeneratorFormLayout from "../../layouts/GeneratorFormLayout";
 
 export default function WeeklyMovieGenerator() {
   const [formData, setFormData] = useState<FormData>({

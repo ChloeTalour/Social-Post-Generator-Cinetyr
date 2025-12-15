@@ -2,7 +2,7 @@ import FormField from "./FormField";
 import DragAndDrop from "../DragAndDrop/DragAndDrop";
 import FormBadges, { type BadgeProps } from "./Badges/FormBadges";
 import PickerColor from "../PickerColor/PickerColor";
-import FormLayout from "../Layout/FormLayout";
+import FormLayout from "../../layouts/FormLayout";
 
 export interface FormData {
   filename: string;

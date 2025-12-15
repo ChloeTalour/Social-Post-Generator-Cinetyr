@@ -1,4 +1,3 @@
-import { useRef } from "react";
 import { useDraggable } from "../../hooks/useDraggable";
 
 interface DraggableImageProps {
@@ -13,14 +12,12 @@ interface DraggableImageProps {
 export default function DraggableImage({
   src,
   alt = "",
-  offsetX,
-  offsetY,
+  offsetX = 0,
+  offsetY = 0,
   onChange,
 }: DraggableImageProps) {
-  const containerRef = useRef<HTMLDivElement | null>(null);
-  const imageRef = useRef<HTMLImageElement | null>(null);
 
-  const { position, onMouseDown, onMouseMove, onMouseUp, scale, onWheel, onDoubleClick } = useDraggable({ containerRef, imageRef, onChange, offsetX, offsetY });
+  const { position, onMouseDown, onMouseMove, onMouseUp, scale, onWheel, onDoubleClick, containerRef, imageRef } = useDraggable({ onChange, offsetX, offsetY });
 
   return <div
     className="relative w-full h-full overflow-hidden cursor-grab active:cursor-grabbing select-none"
