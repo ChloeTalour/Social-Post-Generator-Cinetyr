@@ -1,12 +1,12 @@
 import React from "react";
-import InstaPost from "../../templates/InstaPost";
-import FacebookPost from "../../templates/FacebookPost";
+import InstaPost from "./contentPreview/InstaPost";
+import FacebookPost from "./contentPreview/FacebookPost";
 
 import type { FormData } from "../Form/FormPanel";
 
-import InstaStory from "../../templates/InstaStory/InstaStory";
-import InstaDailyStory from "../../templates/InstaStory/InstaDailyStory";
-import InstaDailyResumeStory from "../../templates/InstaStory/InstaDailyResumeStory";
+import InstaStory from "./contentPreview/InstaStory/InstaStory";
+import InstaDailyStory from "./contentPreview/InstaStory/InstaDailyStory";
+import InstaDailyResumeStory from "./contentPreview/InstaStory/InstaDailyResumeStory";
 
 interface PreviewContainerProps {
   data: FormData;

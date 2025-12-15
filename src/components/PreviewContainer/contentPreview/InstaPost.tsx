@@ -1,5 +1,5 @@
-import DraggableImage from "../components/DraggableImage/DraggableImage";
-import type { FormData } from "../components/Form/FormPanel";
+import DraggableImage from "../../DraggableImage/DraggableImage";
+import type { FormData } from "../../Form/FormPanel";
 
 interface InstaPostProps {
   data: FormData;

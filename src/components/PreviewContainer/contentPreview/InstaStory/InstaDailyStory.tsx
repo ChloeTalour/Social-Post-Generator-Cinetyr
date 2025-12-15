@@ -1,6 +1,6 @@
-import DraggableImage from "../../components/DraggableImage/DraggableImage";
+import DraggableImage from "../../../DraggableImage/DraggableImage";
 import HeaderInstaStory from "./HeaderInstaStory";
-import type { FormData } from "../../components/Form/FormPanel";
+import type { FormData } from "../../../Form/FormPanel";
 
 interface InstaStoryProps {
     data: FormData;

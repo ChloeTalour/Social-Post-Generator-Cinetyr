@@ -16,7 +16,6 @@ export default function GeneratorPageLayout({ children, nodes, numberOfPdf }: Ge
             if (!node.ref) continue;
             try {
                 const dataUrl = await toPng(node.ref, { cacheBust: true });
-                console.log(node.ref)
                 const link = document.createElement("a");
                 link.download = node.filename;
                 link.href = dataUrl;
@@ -44,10 +43,7 @@ export default function GeneratorPageLayout({ children, nodes, numberOfPdf }: Ge
 
                 <div className="h-screen">
                     <div
-                        className="scale-[0.45] origin-center flex flex-col items-center gap-10"
-                        style={{
-                            transformOrigin: "top center",
-                        }}
+                        className="scale-[0.45] flex flex-col items-center gap-10 origin-top origin-center"
                     >
                         {children}
                     </div>
